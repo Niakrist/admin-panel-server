@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../generated/prisma';
 import { faker } from '@faker-js/faker';
 import { hash } from 'argon2';
 import 'dotenv/config';
@@ -16,22 +16,22 @@ async function main() {
     const password = await hash('123456');
     const role = 'USER';
     const country = faker.helpers.arrayElement(countries);
-    const created_at = faker.date.past({ years: 1 });
-    const updated_at = new Date(
-      created_at.getTime() +
-        Math.random() * (new Date().getTime() - created_at.getTime()),
+    const createdAt = faker.date.past({ years: 1 });
+    const updatedAt = new Date(
+      createdAt.getTime() +
+        Math.random() * (new Date().getTime() - createdAt.getTime()),
     );
 
     await prisma.user.create({
-      date: {
+      data: {
         email,
         name,
         avatarUrl,
         password,
         role,
         country,
-        created_at,
-        updated_at,
+        createdAt,
+        updatedAt,
       },
     });
   }
@@ -42,6 +42,7 @@ main()
     console.error(error);
     process.exit(1);
   })
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   .finally(async () => {
     await prisma.$disconnect();
   });
