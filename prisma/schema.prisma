@@ -18,7 +18,7 @@ model User {
   email     String  @unique
   name      String?
   avatarUrl String?
-  country   String
+  country   String?
   role      Role    @default(USER)
 
   @@map("user")
