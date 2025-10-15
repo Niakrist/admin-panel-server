@@ -5,6 +5,7 @@ import { SettingsModule } from './settings/settings.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { EmailModule } from './email/email.module';
 import { AuthModule } from './auth/auth.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
     EmailModule,
     SettingsModule,
     StatisticsModule,
+    MediaModule,
   ],
   controllers: [],
   providers: [],
