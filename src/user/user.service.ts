@@ -19,9 +19,7 @@ export class UserService {
   }
 
   async findByEmail(email: string) {
-    const user = await this.prisma.user.findUnique({ where: { email } });
-    if (!user) throw new NotFoundException('User not found');
-    return user;
+    return this.prisma.user.findUnique({ where: { email } });
   }
 
   async findAll(args?: PaginationArgsWithSearchTerm): Promise<UserResponse> {
@@ -47,7 +45,7 @@ export class UserService {
 
   async create({ password, ...dto }: AuthDto) {
     const user = { ...dto, password: await hash(password) };
-    return await this.prisma.user.create({ data: user });
+    return this.prisma.user.create({ data: user });
   }
 
   async update(id: number, { password, ...data }: UpdateUserDto) {
