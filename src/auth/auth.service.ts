@@ -31,9 +31,9 @@ export class AuthService {
   }
   async register(dto: AuthDto) {
     const oldUser = await this.userService.findByEmail(dto.email);
+
     if (oldUser) throw new BadRequestException('User already exists');
 
-    // Отдаем user без password
     const { password, ...user } = await this.userService.create(dto);
 
     const tokens = await this.issueTokens(user.id, user.role);

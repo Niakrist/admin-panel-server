@@ -16,7 +16,7 @@ import type { CreateUserDto, UpdateUserDto } from './dto/create-user.dto';
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Auth('ADMIN')
+  // @Auth('ADMIN')
   @Get()
   async getList(@Query() params: PaginationArgsWithSearchTerm) {
     return this.userService.findAll(params);
