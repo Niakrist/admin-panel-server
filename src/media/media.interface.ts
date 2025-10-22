@@ -1,5 +1,5 @@
 export interface IFile {
-  originalName?: string; // опционально (используется ||)
+  originalname?: string; // опционально (используется ||)
   url?: string;
   name?: string; // опционально (используется ||)
   buffer: Buffer; // обязательно (передается в writeFile)

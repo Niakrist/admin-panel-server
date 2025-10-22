@@ -18,7 +18,7 @@ export class MediaService {
     const responses: IMediaResponse[] = [];
 
     for (const file of Array.isArray(mediaFiles) ? mediaFiles : [mediaFiles]) {
-      const fileName = file?.originalName || file?.name;
+      const fileName = file?.originalname || file?.name;
 
       const uniqueSuffix = uuidv4().split('-')[0];
       const uniqueFileName = `${uniqueSuffix}-${fileName}`;
