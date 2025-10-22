@@ -1,5 +1,6 @@
 import {
   Controller,
+  Get,
   HttpCode,
   Post,
   Query,
